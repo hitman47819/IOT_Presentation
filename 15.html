@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLE Hardware Implementation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 25px;
+            width: 100%;
+        }
+        .hardware-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .hardware-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .hardware-icon {
+            font-size: 36px;
+            color: #4fc3f7;
+            margin-right: 15px;
+        }
+        .hardware-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .hardware-list {
+            list-style-type: none;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+        .hardware-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .specs-box {
+            margin-top: auto;
+            background-color: rgba(0, 51, 102, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #555;
+        }
+        .specs-title {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .specs-icon {
+            font-size: 20px;
+            color: #4fc3f7;
+            margin-right: 8px;
+        }
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 8px;
+        }
+        .spec-item {
+            display: flex;
+            align-items: center;
+        }
+        .spec-icon {
+            color: #4fc3f7;
+            margin-right: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">BLE Hardware Implementation</h1>
+        </div>
+        <div class="content">
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <div class="hardware-header">
+                        <i class="material-icons hardware-icon">developer_board</i>
+                        <h2 class="hardware-title">BLE Modules</h2>
+                    </div>
+                    <ul class="hardware-list">
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">memory</i>
+                            <span><span class="highlight">System-on-Chip</span> - Nordic nRF52 series</span>
+                        </li>
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">memory</i>
+                            <span><span class="highlight">MCU Integration</span> - ARM Cortex-M4F</span>
+                        </li>
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">sd_storage</i>
+                            <span><span class="highlight">Memory</span> - 64KB RAM, 512KB Flash</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: 5mA TX, 1mA RX</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Battery: 6-12 months</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">speed</i>
+                                <span>Speed: 1-2 Mbps</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">straighten</i>
+                                <span>Size: 8×8mm²</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hardware-card">
+                    <div class="hardware-header">
+                        <i class="material-icons hardware-icon">settings_input_antenna</i>
+                        <h2 class="hardware-title">Antennas</h2>
+                    </div>
+                    <ul class="hardware-list">
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">straighten</i>
+                            <span><span class="highlight">PCB Antenna</span> - Integrated design</span>
+                        </li>
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">waves</i>
+                            <span><span class="highlight">Chip Antenna</span> - Compact form factor</span>
+                        </li>
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">view_in_ar</i>
+                            <span><span class="highlight">External Antenna</span> - Extended range</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">straighten</i>
+                                <span>Size: 3-10mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">signal_cellular_alt</i>
+                                <span>Gain: 2-5 dBi</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">wifi</i>
+                                <span>Frequency: 2.4GHz</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">water_drop</i>
+                                <span>Waterproof: IP67</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hardware-card">
+                    <div class="hardware-header">
+                        <i class="material-icons hardware-icon">battery_charging_full</i>
+                        <h2 class="hardware-title">Power Management</h2>
+                    </div>
+                    <ul class="hardware-list">
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">sleep</i>
+                            <span><span class="highlight">Sleep Modes</span> - Deep sleep states</span>
+                        </li>
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">schedule</i>
+                            <span><span class="highlight">Duty Cycling</span> - Intermittent operation</span>
+                        </li>
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">bolt</i>
+                            <span><span class="highlight">Energy Harvesting</span> - Kinetic/thermal</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_full</i>
+                                <span>Current: 0.5µA sleep</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_alert</i>
+                                <span>Wake-up: <10ms</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Battery: Coin cell 3V</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">power</i>
+                                <span>PMIC: Dedicated IC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hardware-card">
+                    <div class="hardware-header">
+                        <i class="material-icons hardware-icon">security</i>
+                        <h2 class="hardware-title">Security Features</h2>
+                    </div>
+                    <ul class="hardware-list">
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">enhanced_encryption</i>
+                            <span><span class="highlight">AES-128</span> - Hardware encryption</span>
+                        </li>
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">fingerprint</i>
+                            <span><span class="highlight">Secure Boot</span> - Authentication</span>
+                        </li>
+                        <li class="hardware-item">
+                            <i class="material-icons item-icon">memory</i>
+                            <span><span class="highlight">Secure Elements</span> - Key storage</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">security</i>
+                                <span>Encryption: AES-128/256</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">verified_user</i>
+                                <span>Authentication: ECC P-256</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">lock</i>
+                                <span>Key Storage: Secure element</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">gpp_good</i>
+                                <span>FIPS 140-2 compliant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

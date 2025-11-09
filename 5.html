@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Hardware Components in Healthcare IoT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 30px;
+            width: 100%;
+        }
+        .component-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .component-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .component-icon {
+            font-size: 36px;
+            color: #4fc3f7;
+            margin-right: 15px;
+        }
+        .component-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .component-list {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        .component-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Key Hardware Components in Healthcare IoT</h1>
+        </div>
+        <div class="content">
+            <div class="components-grid">
+                <div class="component-card">
+                    <div class="component-header">
+                        <i class="material-icons component-icon">sensors</i>
+                        <h2 class="component-title">Sensors</h2>
+                    </div>
+                    <ul class="component-list">
+                        <li class="component-item">
+                            <i class="material-icons item-icon">favorite</i>
+                            <span><span class="highlight">Physiological:</span> Heart rate, ECG, SpO₂</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">opacity</i>
+                            <span><span class="highlight">Biochemical:</span> Glucose, pH, electrolytes</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">straighten</i>
+                            <span><span class="highlight">Motion:</span> Accelerometers, gyroscopes</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">thermostat</i>
+                            <span><span class="highlight">Environmental:</span> Temperature, humidity</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-header">
+                        <i class="material-icons component-icon">memory</i>
+                        <h2 class="component-title">Processors</h2>
+                    </div>
+                    <ul class="component-list">
+                        <li class="component-item">
+                            <i class="material-icons item-icon">developer_board</i>
+                            <span><span class="highlight">Microcontrollers:</span> ARM Cortex-M series</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">memory</i>
+                            <span><span class="highlight">System-on-Chip:</span> Integrated sensor processing</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">speed</i>
+                            <span><span class="highlight">Digital Signal:</span> Real-time data filtering</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">security</i>
+                            <span><span class="highlight">Secure Elements:</span> Hardware encryption</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-header">
+                        <i class="material-icons component-icon">router</i>
+                        <h2 class="component-title">Communication Modules</h2>
+                    </div>
+                    <ul class="component-list">
+                        <li class="component-item">
+                            <i class="material-icons item-icon">bluetooth</i>
+                            <span><span class="highlight">Bluetooth LE:</span> Low-power connectivity</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">wifi</i>
+                            <span><span class="highlight">Wi-Fi:</span> High-bandwidth data transfer</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">cell_tower</i>
+                            <span><span class="highlight">Cellular:</span> LTE-M, NB-IoT for remote areas</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">nfc</i>
+                            <span><span class="highlight">NFC/RFID:</span> Identification & tracking</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-header">
+                        <i class="material-icons component-icon">battery_charging_full</i>
+                        <h2 class="component-title">Power Sources</h2>
+                    </div>
+                    <ul class="component-list">
+                        <li class="component-item">
+                            <i class="material-icons item-icon">battery_full</i>
+                            <span><span class="highlight">Batteries:</span> Li-ion, thin-film, solid-state</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">bolt</i>
+                            <span><span class="highlight">Energy Harvesting:</span> Kinetic, thermal, solar</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">power</i>
+                            <span><span class="highlight">Power Management:</span> Ultra-low-power ICs</span>
+                        </li>
+                        <li class="component-item">
+                            <i class="material-icons item-icon">eco</i>
+                            <span><span class="highlight">Wireless Charging:</span> Inductive, resonant</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

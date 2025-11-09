@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLE in Medical Devices</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .device-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .device-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .device-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .device-icon {
+            font-size: 32px;
+            color: #4fc3f7;
+            margin-right: 12px;
+        }
+        .device-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .device-list {
+            list-style-type: none;
+        }
+        .device-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 280px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .hardware-considerations {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .consideration-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .consideration-icon {
+            color: #4fc3f7;
+            margin-right: 12px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .consideration-text {
+            font-size: 20px;
+            color: #333;
+        }
+        .implementation-box {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .implementation-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+        .implementation-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .implementation-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .implementation-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .case-study {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .case-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .case-icon {
+            font-size: 22px;
+            color: #4fc3f7;
+            margin-right: 8px;
+        }
+        .case-text {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">BLE in Medical Devices</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">medical_services</i>
+                    BLE Medical Device Applications
+                </div>
+                <div class="device-grid">
+                    <div class="device-card">
+                        <div class="device-header">
+                            <i class="material-icons device-icon">monitor_heart</i>
+                            <h2 class="device-title">Vital Sign Monitors</h2>
+                        </div>
+                        <ul class="device-list">
+                            <li class="device-item">
+                                <i class="material-icons item-icon">favorite</i>
+                                <span><span class="highlight">Heart Rate</span> - Continuous monitoring</span>
+                            </li>
+                            <li class="device-item">
+                                <i class="material-icons item-icon">bloodtype</i>
+                                <span><span class="highlight">Blood Pressure</span> - Cuffless sensors</span>
+                            </li>
+                            <li class="device-item">
+                                <i class="material-icons item-icon">thermostat</i>
+                                <span><span class="highlight">Temperature</span> - Patch sensors</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="device-card">
+                        <div class="device-header">
+                            <i class="material-icons device-icon">medication</i>
+                            <h2 class="device-title">Medication Devices</h2>
+                        </div>
+                        <ul class="device-list">
+                            <li class="device-item">
+                                <i class="material-icons item-icon">insights</i>
+                                <span><span class="highlight">Insulin Pumps</span> - Dose tracking</span>
+                            </li>
+                            <li class="device-item">
+                                <i class="material-icons item-icon">schedule</i>
+                                <span><span class="highlight">Smart Dispensers</span> - Adherence</span>
+                            </li>
+                            <li class="device-item">
+                                <i class="material-icons item-icon">notifications</i>
+                                <span><span class="highlight">Reminders</span> - Patient alerts</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">memory</i>
+                    Hardware Considerations
+                </div>
+                <div class="hardware-considerations">
+                    <div class="consideration-item">
+                        <i class="material-icons consideration-icon">battery_charging_full</i>
+                        <div class="consideration-text">
+                            <span class="highlight">Power Management</span> - Sleep modes, adaptive transmission
+                        </div>
+                    </div>
+                    <div class="consideration-item">
+                        <i class="material-icons consideration-icon">security</i>
+                        <div class="consideration-text">
+                            <span class="highlight">Security</span> - Encryption, authentication protocols
+                        </div>
+                    </div>
+                    <div class="consideration-item">
+                        <i class="material-icons consideration-icon">signal_cellular_alt</i>
+                        <div class="consideration-text">
+                            <span class="highlight">Signal Strength</span> - Antenna design, interference handling
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="image-container">
+                    <img src="./assets/16c08cc92d85.png" alt="BLE Medical Device - Glucose Monitor">
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">integration_instructions</i>
+                    Implementation Examples
+                </div>
+                <div class="implementation-box">
+                    <div class="implementation-list">
+                        <div class="implementation-item">
+                            <i class="material-icons implementation-icon">water_drop</i>
+                            <div class="implementation-text">Continuous Glucose Monitors</div>
+                        </div>
+                        <div class="implementation-item">
+                            <i class="material-icons implementation-icon">fitness_center</i>
+                            <div class="implementation-text">Activity Trackers</div>
+                        </div>
+                        <div class="implementation-item">
+                            <i class="material-icons implementation-icon">hearing</i>
+                            <div class="implementation-text">Hearing Aids</div>
+                        </div>
+                        <div class="implementation-item">
+                            <i class="material-icons implementation-icon">air</i>
+                            <div class="implementation-text">Respiratory Monitors</div>
+                        </div>
+                        <div class="implementation-item">
+                            <i class="material-icons implementation-icon">monitor_weight</i>
+                            <div class="implementation-text">Smart Scales</div>
+                        </div>
+                        <div class="implementation-item">
+                            <i class="material-icons implementation-icon">sleep</i>
+                            <div class="implementation-text">Sleep Trackers</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study">
+                    <div class="case-title">
+                        <i class="material-icons case-icon">lightbulb</i>
+                        Case Study: BLE Glucose Monitoring
+                    </div>
+                    <div class="case-text">
+                        "A BLE-enabled continuous glucose monitor transmits readings every 5 minutes to a smartphone app, operating for 14 days on a single battery while maintaining FDA compliance."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

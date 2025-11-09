@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Trends in Healthcare IoT Hardware</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 25px;
+            width: 100%;
+        }
+        .trend-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-top: 4px solid #4fc3f7;
+        }
+        .trend-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .trend-icon {
+            font-size: 36px;
+            color: #4fc3f7;
+            margin-right: 15px;
+        }
+        .trend-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .trend-list {
+            list-style-type: none;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+        .trend-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 12px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .timeline-box {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+        .timeline-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .timeline-icon {
+            font-size: 26px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 15px;
+        }
+        .timeline-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .timeline-year {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4fc3f7;
+            margin-bottom: 8px;
+        }
+        .timeline-text {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Future Trends in Healthcare IoT Hardware</h1>
+        </div>
+        <div class="content">
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <i class="material-icons trend-icon">straighten</i>
+                        <h2 class="trend-title">Miniaturization</h2>
+                    </div>
+                    <ul class="trend-list">
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">biotech</i>
+                            <span><span class="highlight">Micro-sensors</span> - Sub-mm dimensions</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">memory</i>
+                            <span><span class="highlight">Flexible electronics</span> - Conformable to body</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">science</i>
+                            <span><span class="highlight">Implantable devices</span> - Bio-compatible materials</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <i class="material-icons trend-icon">bolt</i>
+                        <h2 class="trend-title">Energy Harvesting</h2>
+                    </div>
+                    <ul class="trend-list">
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">directions_run</i>
+                            <span><span class="highlight">Kinetic</span> - Body motion energy</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">whatshot</i>
+                            <span><span class="highlight">Thermal</span> - Body heat gradients</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">wb_sunny</i>
+                            <span><span class="highlight">Biochemical</span> - Glucose-powered devices</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <i class="material-icons trend-icon">sensors</i>
+                        <h2 class="trend-title">Advanced Sensors</h2>
+                    </div>
+                    <ul class="trend-list">
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">water_drop</i>
+                            <span><span class="highlight">Multi-analyte</span> - Simultaneous detection</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">visibility</i>
+                            <span><span class="highlight">Optical</span> - Non-invasive monitoring</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">hearing</i>
+                            <span><span class="highlight">Acoustic</span> - Ultrasound imaging</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <i class="material-icons trend-icon">memory</i>
+                        <h2 class="trend-title">Edge Computing</h2>
+                    </div>
+                    <ul class="trend-list">
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">speed</i>
+                            <span><span class="highlight">Neuromorphic chips</span> - Brain-inspired processing</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">developer_board</i>
+                            <span><span class="highlight">TinyML</span> - On-device AI</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">security</i>
+                            <span><span class="highlight">Secure enclaves</span> - Hardware-level protection</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <i class="material-icons trend-icon">bluetooth</i>
+                        <h2 class="trend-title">Connectivity</h2>
+                    </div>
+                    <ul class="trend-list">
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">wifi_tethering</i>
+                            <span><span class="highlight">6G Networks</span> - Ultra-low latency</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">hub</i>
+                            <span><span class="highlight">Body Area Networks</span> - Inter-device communication</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">cell_tower</i>
+                            <span><span class="highlight">Satellite IoT</span> - Remote healthcare</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="trend-card">
+                    <div class="trend-header">
+                        <i class="material-icons trend-icon">biotech</i>
+                        <h2 class="trend-title">Bio-integration</h2>
+                    </div>
+                    <ul class="trend-list">
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">grain</i>
+                            <span><span class="highlight">Nanomaterials</span> - Molecular-level sensors</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">healing</i>
+                            <span><span class="highlight">Smart tattoos</span> - Epidermal electronics</span>
+                        </li>
+                        <li class="trend-item">
+                            <i class="material-icons item-icon">psychology</i>
+                            <span><span class="highlight">Neural interfaces</span> - Brain-computer links</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-box">
+            <div class="timeline-title">
+                <i class="material-icons timeline-icon">timeline</i>
+                Technology Adoption Timeline
+            </div>
+            <div class="timeline-grid">
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-text">Advanced flexible wearables with multi-parameter sensing</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2027</div>
+                    <div class="timeline-text">Self-powered medical devices with energy harvesting</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2030</div>
+                    <div class="timeline-text">Bio-integrated sensors for continuous health monitoring</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

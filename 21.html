@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Security Implementation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 25px;
+            width: 100%;
+        }
+        .security-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .security-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .security-icon {
+            font-size: 36px;
+            color: #4fc3f7;
+            margin-right: 15px;
+        }
+        .security-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .security-list {
+            list-style-type: none;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+        .security-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .specs-box {
+            margin-top: auto;
+            background-color: rgba(0, 51, 102, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #555;
+        }
+        .specs-title {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .specs-icon {
+            font-size: 20px;
+            color: #4fc3f7;
+            margin-right: 8px;
+        }
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 8px;
+        }
+        .spec-item {
+            display: flex;
+            align-items: center;
+        }
+        .spec-icon {
+            color: #4fc3f7;
+            margin-right: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Hardware Security Implementation</h1>
+        </div>
+        <div class="content">
+            <div class="security-grid">
+                <div class="security-card">
+                    <div class="security-header">
+                        <i class="material-icons security-icon">enhanced_encryption</i>
+                        <h2 class="security-title">Secure Elements</h2>
+                    </div>
+                    <ul class="security-list">
+                        <li class="security-item">
+                            <i class="material-icons item-icon">memory</i>
+                            <span><span class="highlight">ATECC608A</span> - CryptoAuthentication</span>
+                        </li>
+                        <li class="security-item">
+                            <i class="material-icons item-icon">sd_storage</i>
+                            <span><span class="highlight">Secure Storage</span> - Protected memory</span>
+                        </li>
+                        <li class="security-item">
+                            <i class="material-icons item-icon">vpn_key</i>
+                            <span><span class="highlight">Key Management</span> - Hardware root of trust</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 2×3mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: <10µA</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">security</i>
+                                <span>Certification: FIPS 140-2</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">memory</i>
+                                <span>Memory: 16KB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="security-card">
+                    <div class="security-header">
+                        <i class="material-icons security-icon">lock</i>
+                        <h2 class="security-title">Encryption Modules</h2>
+                    </div>
+                    <ul class="security-list">
+                        <li class="security-item">
+                            <i class="material-icons item-icon">enhanced_encryption</i>
+                            <span><span class="highlight">AES-256</span> - Hardware acceleration</span>
+                        </li>
+                        <li class="security-item">
+                            <i class="material-icons item-icon">fingerprint</i>
+                            <span><span class="highlight">ECC P-256</span> - Public key crypto</span>
+                        </li>
+                        <li class="security-item">
+                            <i class="material-icons item-icon">security</i>
+                            <span><span class="highlight">SHA-256</span> - Hash functions</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">speed</i>
+                                <span>Speed: 10Mbps+</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: 5-15mW</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 3×3mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">security</i>
+                                <span>Standard: NIST</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="security-card">
+                    <div class="security-header">
+                        <i class="material-icons security-icon">shield</i>
+                        <h2 class="security-title">Tamper Detection</h2>
+                    </div>
+                    <ul class="security-list">
+                        <li class="security-item">
+                            <i class="material-icons item-icon">gpp_maybe</i>
+                            <span><span class="highlight">Voltage Monitors</span> - Glitch detection</span>
+                        </li>
+                        <li class="security-item">
+                            <i class="material-icons item-icon">thermostat</i>
+                            <span><span class="highlight">Temperature Sensors</span> - Environmental monitoring</span>
+                        </li>
+                        <li class="security-item">
+                            <i class="material-icons item-icon">touch_app</i>
+                            <span><span class="highlight">Physical Sensors</span> - Enclosure breach</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 2-5mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: <5µA</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">update</i>
+                                <span>Response: <1ms</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">security</i>
+                                <span>Self-destruct: Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="security-card">
+                    <div class="security-header">
+                        <i class="material-icons security-icon">verified_user</i>
+                        <h2 class="security-title">Secure Boot</h2>
+                    </div>
+                    <ul class="security-list">
+                        <li class="security-item">
+                            <i class="material-icons item-icon">memory</i>
+                            <span><span class="highlight">Root of Trust</span> - Hardware-based</span>
+                        </li>
+                        <li class="security-item">
+                            <i class="material-icons item-icon">verified</i>
+                            <span><span class="highlight">Code Signing</span> - Authentication</span>
+                        </li>
+                        <li class="security-item">
+                            <i class="material-icons item-icon">security</i>
+                            <span><span class="highlight">Rollback Protection</span> - Version control</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 4×4mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: 10-20mW</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">update</i>
+                                <span>Boot time: <100ms</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">security</i>
+                                <span>Standard: IEC 62304</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biochemical Sensors in Healthcare IoT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .sensors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 25px;
+            width: 100%;
+        }
+        .sensor-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .sensor-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .sensor-icon {
+            font-size: 36px;
+            color: #4fc3f7;
+            margin-right: 15px;
+        }
+        .sensor-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .sensor-list {
+            list-style-type: none;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+        .sensor-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .specs-box {
+            margin-top: auto;
+            background-color: rgba(0, 51, 102, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #555;
+        }
+        .specs-title {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .specs-icon {
+            font-size: 20px;
+            color: #4fc3f7;
+            margin-right: 8px;
+        }
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 8px;
+        }
+        .spec-item {
+            display: flex;
+            align-items: center;
+        }
+        .spec-icon {
+            color: #4fc3f7;
+            margin-right: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Biochemical Sensors in Healthcare IoT</h1>
+        </div>
+        <div class="content">
+            <div class="sensors-grid">
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">water_drop</i>
+                        <h2 class="sensor-title">Glucose Monitors</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">science</i>
+                            <span><span class="highlight">Enzyme-based</span> - Glucose oxidase</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">watch</i>
+                            <span><span class="highlight">Continuous</span> - Real-time monitoring</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">touch_app</i>
+                            <span><span class="highlight">Minimally Invasive</span> - Subcutaneous</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Hardware Specs
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 2-8mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: 0.1-1mW</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Battery: 7-14 days</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bluetooth</i>
+                                <span>Connectivity: BLE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">science</i>
+                        <h2 class="sensor-title">pH Sensors</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">biotech</i>
+                            <span><span class="highlight">Ion-selective</span> - Electrochemical</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">water</i>
+                            <span><span class="highlight">Sweat Analysis</span> - Non-invasive</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">straighten</i>
+                            <span><span class="highlight">Microfluidic</span> - Sample handling</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Hardware Specs
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 1-5mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: 0.05-0.5mW</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Battery: 14-30 days</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bluetooth</i>
+                                <span>Connectivity: BLE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">opacity</i>
+                        <h2 class="sensor-title">Electrolyte Sensors</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">biotech</i>
+                            <span><span class="highlight">Multi-analyte</span> - Na+, K+, Cl-</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">water</i>
+                            <span><span class="highlight">Sweat-based</span> - Wearable patches</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">auto_graph</i>
+                            <span><span class="highlight">Real-time</span> - Continuous tracking</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Hardware Specs
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 3-10mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: 0.2-1mW</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Battery: 10-20 days</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bluetooth</i>
+                                <span>Connectivity: BLE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">coronavirus</i>
+                        <h2 class="sensor-title">Biomarker Sensors</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">biotech</i>
+                            <span><span class="highlight">Immunosensors</span> - Antibody-based</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">grain</i>
+                            <span><span class="highlight">Nanomaterials</span> - Enhanced sensitivity</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">health_and_safety</i>
+                            <span><span class="highlight">Disease Detection</span> - Early diagnosis</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Hardware Specs
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 5-15mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Power: 0.5-2mW</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Battery: 5-10 days</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bluetooth</i>
+                                <span>Connectivity: BLE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

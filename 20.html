@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFC/RFID in Medical Equipment Tracking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .tracking-system {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .system-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 22%;
+        }
+        .step-icon {
+            background-color: #4fc3f7;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .step-icon i {
+            font-size: 30px;
+        }
+        .step-text {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+            margin-top: 20px;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .benefit-icon {
+            color: #4fc3f7;
+            margin-right: 12px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .benefit-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 240px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .hardware-specs {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .spec-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .spec-icon {
+            color: #003366;
+            margin-right: 12px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .spec-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .applications-box {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .application-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+        .application-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .application-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .application-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .case-study {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .case-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .case-icon {
+            font-size: 22px;
+            color: #4fc3f7;
+            margin-right: 8px;
+        }
+        .case-text {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">NFC/RFID in Medical Equipment Tracking</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">inventory_2</i>
+                    Equipment Tracking System
+                </div>
+                <div class="tracking-system">
+                    <div class="system-flow">
+                        <div class="flow-step">
+                            <div class="step-icon">
+                                <i class="material-icons">tag</i>
+                            </div>
+                            <div class="step-text">Tag Equipment</div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-icon">
+                                <i class="material-icons">sensors</i>
+                            </div>
+                            <div class="step-text">Readers Detect</div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-icon">
+                                <i class="material-icons">cloud_upload</i>
+                            </div>
+                            <div class="step-text">Data Upload</div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-icon">
+                                <i class="material-icons">analytics</i>
+                            </div>
+                            <div class="step-text">Analytics</div>
+                        </div>
+                    </div>
+                    
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <i class="material-icons benefit-icon">schedule</i>
+                            <div class="benefit-text">
+                                <span class="highlight">Time Savings</span> - 60% faster equipment location
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="material-icons benefit-icon">trending_down</i>
+                            <div class="benefit-text">
+                                <span class="highlight">Cost Reduction</span> - 30% less equipment loss
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="material-icons benefit-icon">build</i>
+                            <div class="benefit-text">
+                                <span class="highlight">Maintenance</span> - Automated scheduling
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="material-icons benefit-icon">inventory</i>
+                            <div class="benefit-text">
+                                <span class="highlight">Inventory</span> - Real-time tracking
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">memory</i>
+                    Hardware Specifications
+                </div>
+                <div class="hardware-specs">
+                    <div class="spec-item">
+                        <i class="material-icons spec-icon">settings_input_antenna</i>
+                        <div class="spec-text">
+                            <span class="highlight">Active RFID</span> - Battery-powered, range up to 100m
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <i class="material-icons spec-icon">battery_charging_full</i>
+                        <div class="spec-text">
+                            <span class="highlight">Passive RFID</span> - No battery, range up to 10m
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <i class="material-icons spec-icon">memory</i>
+                        <div class="spec-text">
+                            <span class="highlight">Memory Capacity</span> - 64 bytes to 8KB
+                        </div>
+                    </div>
+                    <div class="spec-item">
+                        <i class="material-icons spec-icon">water_drop</i>
+                        <div class="spec-text">
+                            <span class="highlight">Durability</span> - Waterproof, sterilizable options
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="image-container">
+                    <img src="./assets/6336179ec202.jpg" alt="RFID Inventory Management">
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">local_hospital</i>
+                    Healthcare Applications
+                </div>
+                <div class="applications-box">
+                    <div class="application-list">
+                        <div class="application-item">
+                            <i class="material-icons application-icon">medical_services</i>
+                            <div class="application-text">Surgical Instruments</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">monitor_heart</i>
+                            <div class="application-text">Patient Monitors</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">medication</i>
+                            <div class="application-text">Medication Carts</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">wheelchair_pickup</i>
+                            <div class="application-text">Mobility Equipment</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">biotech</i>
+                            <div class="application-text">Lab Equipment</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">cleaning_services</i>
+                            <div class="application-text">Sterilization Tracking</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study">
+                    <div class="case-title">
+                        <i class="material-icons case-icon">lightbulb</i>
+                        Case Study: Hospital Equipment Tracking
+                    </div>
+                    <div class="case-text">
+                        "A 300-bed hospital implemented RFID tracking for 2,500+ medical devices, reducing equipment search time by 75% and saving $250,000 annually in lost equipment costs."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

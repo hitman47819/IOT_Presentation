@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Protocols Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .intro {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 25px;
+            flex-grow: 1;
+        }
+        .protocol-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .protocol-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .protocol-icon {
+            font-size: 32px;
+            color: #4fc3f7;
+            margin-right: 12px;
+        }
+        .protocol-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .protocol-specs {
+            margin-top: 10px;
+        }
+        .spec-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .spec-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .hardware-features {
+            margin-top: auto;
+            background-color: rgba(0, 51, 102, 0.05);
+            padding: 12px;
+            border-radius: 6px;
+        }
+        .hardware-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+        }
+        .hardware-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .hardware-tag {
+            background-color: rgba(79, 195, 247, 0.2);
+            color: #003366;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .comparison-note {
+            margin-top: 25px;
+            background-color: rgba(0, 51, 102, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        .note-icon {
+            font-size: 24px;
+            color: #4fc3f7;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Communication Protocols Overview</h1>
+        </div>
+        <div class="content">
+            <div class="intro">
+                Healthcare IoT devices use various <span class="highlight">communication protocols</span> optimized for different requirements:
+            </div>
+            
+            <div class="protocols-grid">
+                <div class="protocol-card">
+                    <div class="protocol-header">
+                        <i class="material-icons protocol-icon">router</i>
+                        <h2 class="protocol-title">MQTT</h2>
+                    </div>
+                    <div class="protocol-specs">
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">architecture</i>
+                            <span>Publish-subscribe model</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">speed</i>
+                            <span>Low bandwidth usage</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">security</i>
+                            <span>QoS levels (0,1,2)</span>
+                        </div>
+                    </div>
+                    <div class="hardware-features">
+                        <div class="hardware-title">Hardware Requirements</div>
+                        <div class="hardware-list">
+                            <div class="hardware-tag">Minimal RAM</div>
+                            <div class="hardware-tag">Low CPU</div>
+                            <div class="hardware-tag">TCP/IP Stack</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-header">
+                        <i class="material-icons protocol-icon">bluetooth</i>
+                        <h2 class="protocol-title">Bluetooth LE</h2>
+                    </div>
+                    <div class="protocol-specs">
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">battery_charging_full</i>
+                            <span>Ultra-low power consumption</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">straighten</i>
+                            <span>Short range (10-100m)</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">sync</i>
+                            <span>Fast connection times</span>
+                        </div>
+                    </div>
+                    <div class="hardware-features">
+                        <div class="hardware-title">Hardware Requirements</div>
+                        <div class="hardware-list">
+                            <div class="hardware-tag">BLE Radio</div>
+                            <div class="hardware-tag">Coin Cell Battery</div>
+                            <div class="hardware-tag">GATT Profile</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-header">
+                        <i class="material-icons protocol-icon">nfc</i>
+                        <h2 class="protocol-title">NFC/RFID</h2>
+                    </div>
+                    <div class="protocol-specs">
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">touch_app</i>
+                            <span>Very short range (cm)</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">bolt</i>
+                            <span>Passive power transfer</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">speed</i>
+                            <span>Instant data exchange</span>
+                        </div>
+                    </div>
+                    <div class="hardware-features">
+                        <div class="hardware-title">Hardware Requirements</div>
+                        <div class="hardware-list">
+                            <div class="hardware-tag">Antenna Coil</div>
+                            <div class="hardware-tag">Passive Tags</div>
+                            <div class="hardware-tag">Reader Module</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-header">
+                        <i class="material-icons protocol-icon">wifi</i>
+                        <h2 class="protocol-title">Wi-Fi</h2>
+                    </div>
+                    <div class="protocol-specs">
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">speed</i>
+                            <span>High bandwidth</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">straighten</i>
+                            <span>Medium range (50-100m)</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">memory</i>
+                            <span>IP-based connectivity</span>
+                        </div>
+                    </div>
+                    <div class="hardware-features">
+                        <div class="hardware-title">Hardware Requirements</div>
+                        <div class="hardware-list">
+                            <div class="hardware-tag">Wi-Fi Module</div>
+                            <div class="hardware-tag">Higher Power</div>
+                            <div class="hardware-tag">TCP/IP Stack</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-header">
+                        <i class="material-icons protocol-icon">cell_tower</i>
+                        <h2 class="protocol-title">Cellular (LPWAN)</h2>
+                    </div>
+                    <div class="protocol-specs">
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">public</i>
+                            <span>Wide area coverage</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">battery_charging_full</i>
+                            <span>Low power operation</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">sync</i>
+                            <span>Reliable connectivity</span>
+                        </div>
+                    </div>
+                    <div class="hardware-features">
+                        <div class="hardware-title">Hardware Requirements</div>
+                        <div class="hardware-list">
+                            <div class="hardware-tag">Cellular Modem</div>
+                            <div class="hardware-tag">SIM Card</div>
+                            <div class="hardware-tag">Antenna</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="protocol-card">
+                    <div class="protocol-header">
+                        <i class="material-icons protocol-icon">settings_input_antenna</i>
+                        <h2 class="protocol-title">Zigbee</h2>
+                    </div>
+                    <div class="protocol-specs">
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">hub</i>
+                            <span>Mesh networking</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">battery_charging_full</i>
+                            <span>Low power consumption</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">security</i>
+                            <span>Secure communications</span>
+                        </div>
+                    </div>
+                    <div class="hardware-features">
+                        <div class="hardware-title">Hardware Requirements</div>
+                        <div class="hardware-list">
+                            <div class="hardware-tag">Zigbee Radio</div>
+                            <div class="hardware-tag">Coordinator</div>
+                            <div class="hardware-tag">Router Nodes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-note">
+                <i class="material-icons note-icon">lightbulb</i>
+                <span>Protocol selection depends on <span class="highlight">power requirements</span>, <span class="highlight">data bandwidth</span>, <span class="highlight">range</span>, and <span class="highlight">hardware constraints</span> of the medical device</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

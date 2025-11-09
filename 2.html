@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Members Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 40px 70px;
+            justify-content: center;
+        }
+        .table-container {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .table-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        .table-icon {
+            font-size: 32px;
+            color: #4fc3f7;
+            margin-right: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        thead {
+            background-color: #003366;
+            color: white;
+        }
+        th {
+            padding: 18px 25px;
+            text-align: left;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        tbody tr {
+            border-bottom: 1px solid rgba(0, 51, 102, 0.1);
+        }
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+        td {
+            padding: 18px 25px;
+            font-size: 20px;
+            color: #333;
+        }
+        tbody tr:nth-child(even) {
+            background-color: rgba(79, 195, 247, 0.05);
+        }
+        .member-icon {
+            color: #4fc3f7;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+        .id-badge {
+            display: inline-block;
+            background-color: rgba(0, 51, 102, 0.1);
+            color: #003366;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Group Members</h1>
+        </div>
+        <div class="content">
+            <div class="table-container">
+                <div class="table-title">
+                    <i class="material-icons table-icon">groups</i>
+                    Presentation Team
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="material-icons member-icon">person</i>Basma AbdElkhalek Ahmed</td>
+                            <td><span class="id-badge">20211701178</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons member-icon">person</i>Basma Khaled Mahmoud</td>
+                            <td><span class="id-badge">2021170117</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons member-icon">person</i>Salsabil Ahemd Elsayed</td>
+                            <td><span class="id-badge">2022170573</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons member-icon">person</i>Malak Saad Mohamed Anani</td>
+                            <td><span class="id-badge">2021170539</span></td>
+                        </tr>
+                        <tr>
+                            <td><i class="material-icons member-icon">person</i>Mohamed Ali Mohamed Farouk</td>
+                            <td><span class="id-badge">2021170478</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

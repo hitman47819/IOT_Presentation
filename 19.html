@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Management Hardware Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .power-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 25px;
+            width: 100%;
+        }
+        .power-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .power-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .power-icon {
+            font-size: 36px;
+            color: #4fc3f7;
+            margin-right: 15px;
+        }
+        .power-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .power-list {
+            list-style-type: none;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+        .power-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .specs-box {
+            margin-top: auto;
+            background-color: rgba(0, 51, 102, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #555;
+        }
+        .specs-title {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .specs-icon {
+            font-size: 20px;
+            color: #4fc3f7;
+            margin-right: 8px;
+        }
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 8px;
+        }
+        .spec-item {
+            display: flex;
+            align-items: center;
+        }
+        .spec-icon {
+            color: #4fc3f7;
+            margin-right: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Power Management Hardware Solutions</h1>
+        </div>
+        <div class="content">
+            <div class="power-grid">
+                <div class="power-card">
+                    <div class="power-header">
+                        <i class="material-icons power-icon">battery_full</i>
+                        <h2 class="power-title">Battery Technologies</h2>
+                    </div>
+                    <ul class="power-list">
+                        <li class="power-item">
+                            <i class="material-icons item-icon">battery_charging_full</i>
+                            <span><span class="highlight">Thin-film Li-ion</span> - Flexible form factor</span>
+                        </li>
+                        <li class="power-item">
+                            <i class="material-icons item-icon">battery_6_bar</i>
+                            <span><span class="highlight">Solid-state</span> - Enhanced safety</span>
+                        </li>
+                        <li class="power-item">
+                            <i class="material-icons item-icon">battery_4_bar</i>
+                            <span><span class="highlight">Printed batteries</span> - Custom shapes</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">straighten</i>
+                                <span>Size: 5-30mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_full</i>
+                                <span>Capacity: 10-200mAh</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">water_drop</i>
+                                <span>Waterproof: IP68</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">healing</i>
+                                <span>Biocompatible: Yes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="power-card">
+                    <div class="power-header">
+                        <i class="material-icons power-icon">power</i>
+                        <h2 class="power-title">Power Management ICs</h2>
+                    </div>
+                    <ul class="power-list">
+                        <li class="power-item">
+                            <i class="material-icons item-icon">power_settings_new</i>
+                            <span><span class="highlight">DC-DC Converters</span> - 95%+ efficiency</span>
+                        </li>
+                        <li class="power-item">
+                            <i class="material-icons item-icon">battery_charging_full</i>
+                            <span><span class="highlight">Battery Chargers</span> - Fast, safe charging</span>
+                        </li>
+                        <li class="power-item">
+                            <i class="material-icons item-icon">battery_std</i>
+                            <span><span class="highlight">Fuel Gauges</span> - Accurate monitoring</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">precision_manufacturing</i>
+                                <span>Size: 2-5mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Efficiency: >95%</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Charge: 0.5-2C rate</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">security</i>
+                                <span>Safety: IEC 60601</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="power-card">
+                    <div class="power-header">
+                        <i class="material-icons power-icon">bolt</i>
+                        <h2 class="power-title">Energy Harvesting</h2>
+                    </div>
+                    <ul class="power-list">
+                        <li class="power-item">
+                            <i class="material-icons item-icon">directions_run</i>
+                            <span><span class="highlight">Kinetic</span> - Motion, vibration</span>
+                        </li>
+                        <li class="power-item">
+                            <i class="material-icons item-icon">whatshot</i>
+                            <span><span class="highlight">Thermal</span> - Body heat gradients</span>
+                        </li>
+                        <li class="power-item">
+                            <i class="material-icons item-icon">wb_sunny</i>
+                            <span><span class="highlight">Solar</span> - Indoor/outdoor light</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">straighten</i>
+                                <span>Size: 5-15mm²</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Output: 10-500µW</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Storage: Supercapacitor</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">update</i>
+                                <span>Lifetime: 5+ years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="power-card">
+                    <div class="power-header">
+                        <i class="material-icons power-icon">power_off</i>
+                        <h2 class="power-title">Low-Power Design</h2>
+                    </div>
+                    <ul class="power-list">
+                        <li class="power-item">
+                            <i class="material-icons item-icon">sleep</i>
+                            <span><span class="highlight">Sleep Modes</span> - Deep sleep states</span>
+                        </li>
+                        <li class="power-item">
+                            <i class="material-icons item-icon">schedule</i>
+                            <span><span class="highlight">Duty Cycling</span> - Intermittent operation</span>
+                        </li>
+                        <li class="power-item">
+                            <i class="material-icons item-icon">memory</i>
+                            <span><span class="highlight">Efficient MCUs</span> - ARM Cortex-M0+</span>
+                        </li>
+                    </ul>
+                    <div class="specs-box">
+                        <div class="specs-title">
+                            <i class="material-icons specs-icon">memory</i>
+                            Healthcare Specifications
+                        </div>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_alert</i>
+                                <span>Sleep: <1µA</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">bolt</i>
+                                <span>Active: 5-20mA</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">update</i>
+                                <span>Wake-up: <10ms</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="material-icons spec-icon">battery_charging_full</i>
+                                <span>Battery: 30-90 days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

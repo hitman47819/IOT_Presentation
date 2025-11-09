@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Protocol in Healthcare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .left-content {
+            flex: 1.2;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 0.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .feature-list {
+            margin-bottom: 25px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .feature-icon {
+            color: #4fc3f7;
+            margin-right: 12px;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .feature-text {
+            font-size: 20px;
+            color: #333;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 280px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .hardware-box {
+            background-color: rgba(79, 195, 247, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .hardware-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .hardware-icon {
+            font-size: 24px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+        .hardware-item {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            color: #333;
+        }
+        .hardware-item-icon {
+            color: #003366;
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        .quote-box {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-left: 4px solid #4fc3f7;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            font-style: italic;
+        }
+        .quote-source {
+            font-style: normal;
+            font-weight: 600;
+            color: #003366;
+            margin-top: 8px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">MQTT Protocol in Healthcare</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">info</i>
+                    What is MQTT?
+                </div>
+                <div class="feature-text">
+                    <span class="highlight">Message Queuing Telemetry Transport</span> - Lightweight publish-subscribe protocol optimized for IoT devices with limited resources
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">thumb_up</i>
+                    Advantages in Healthcare IoT
+                </div>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="material-icons feature-icon">battery_charging_full</i>
+                        <div class="feature-text">
+                            <span class="highlight">Low Power Consumption</span> - Minimal overhead for battery-powered medical devices
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="material-icons feature-icon">speed</i>
+                        <div class="feature-text">
+                            <span class="highlight">Low Bandwidth</span> - Efficient for real-time health data transmission
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="material-icons feature-icon">security</i>
+                        <div class="feature-text">
+                            <span class="highlight">Quality of Service (QoS)</span> - Three levels for reliable medical data delivery
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="material-icons feature-icon">architecture</i>
+                        <div class="feature-text">
+                            <span class="highlight">Decoupled Architecture</span> - Devices and applications can operate independently
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hardware-box">
+                    <div class="hardware-title">
+                        <i class="material-icons hardware-icon">memory</i>
+                        Hardware Implementation
+                    </div>
+                    <div class="hardware-grid">
+                        <div class="hardware-item">
+                            <i class="material-icons hardware-item-icon">memory</i>
+                            <span>Minimal RAM (8-32KB)</span>
+                        </div>
+                        <div class="hardware-item">
+                            <i class="material-icons hardware-item-icon">developer_board</i>
+                            <span>Low-power MCU</span>
+                        </div>
+                        <div class="hardware-item">
+                            <i class="material-icons hardware-item-icon">wifi</i>
+                            <span>TCP/IP Stack</span>
+                        </div>
+                        <div class="hardware-item">
+                            <i class="material-icons hardware-item-icon">security</i>
+                            <span>TLS/SSL Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="image-container">
+                    <img src="./assets/6f4016878555.png" alt="MQTT Protocol Architecture">
+                </div>
+                
+                <div class="image-container">
+                    <img src="./assets/b104692e17e3.jpg" alt="MQTT in Healthcare Monitoring">
+                </div>
+                
+                <div class="quote-box">
+                    "MQTT enables healthcare providers to remotely monitor patients in real-time while maintaining data integrity and security."
+                    <div class="quote-source">— IEEE Smart Healthcare Monitoring System (2018)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

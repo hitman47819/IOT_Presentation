@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to IoT in Healthcare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 30px;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .definition {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 20px;
+        }
+        .key-points {
+            margin-top: 30px;
+        }
+        .point {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .point-icon {
+            color: #4fc3f7;
+            margin-right: 15px;
+            font-size: 24px;
+        }
+        .point-text {
+            font-size: 20px;
+            color: #333;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Introduction to IoT in Healthcare</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="definition">
+                    What is IoT in Healthcare?
+                </div>
+                <div class="point-text">
+                    A network of interconnected medical devices, sensors, and applications that collect and exchange health data without human intervention.
+                </div>
+                
+                <div class="key-points">
+                    <div class="point">
+                        <i class="material-icons point-icon">sensors</i>
+                        <div class="point-text">
+                            <span class="highlight">Hardware Components:</span> Sensors, wearables, RFID/NFC tags, Bluetooth modules
+                        </div>
+                    </div>
+                    <div class="point">
+                        <i class="material-icons point-icon">sync</i>
+                        <div class="point-text">
+                            <span class="highlight">Real-time Data:</span> Continuous monitoring of vital signs and health metrics
+                        </div>
+                    </div>
+                    <div class="point">
+                        <i class="material-icons point-icon">security</i>
+                        <div class="point-text">
+                            <span class="highlight">Security Focus:</span> Hardware-level protection for sensitive health data
+                        </div>
+                    </div>
+                    <div class="point">
+                        <i class="material-icons point-icon">battery_charging_full</i>
+                        <div class="point-text">
+                            <span class="highlight">Power Efficiency:</span> Low-energy technologies for extended device operation
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-content">
+                <div class="image-container">
+                    <img src="./assets/00876a73fe04.png" alt="IoT Healthcare Hardware Components">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

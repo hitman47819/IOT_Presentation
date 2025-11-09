@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Management in Healthcare IoT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .challenges-box {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .challenge-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .challenge-icon {
+            color: #4fc3f7;
+            margin-right: 12px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .challenge-text {
+            font-size: 20px;
+            color: #333;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .solution-card {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .solution-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .solution-icon {
+            font-size: 32px;
+            color: #4fc3f7;
+            margin-right: 12px;
+        }
+        .solution-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .solution-list {
+            list-style-type: none;
+        }
+        .solution-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .battery-types {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .battery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+        .battery-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .battery-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .battery-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .case-study {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .case-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .case-icon {
+            font-size: 22px;
+            color: #4fc3f7;
+            margin-right: 8px;
+        }
+        .case-text {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Power Management in Healthcare IoT</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">report_problem</i>
+                    Power Challenges
+                </div>
+                <div class="challenges-box">
+                    <div class="challenge-item">
+                        <i class="material-icons challenge-icon">battery_alert</i>
+                        <div class="challenge-text">
+                            <span class="highlight">Limited Battery Life</span> - Continuous monitoring demands
+                        </div>
+                    </div>
+                    <div class="challenge-item">
+                        <i class="material-icons challenge-icon">straighten</i>
+                        <div class="challenge-text">
+                            <span class="highlight">Size Constraints</span> - Miniaturization vs. capacity
+                        </div>
+                    </div>
+                    <div class="challenge-item">
+                        <i class="material-icons challenge-icon">healing</i>
+                        <div class="challenge-text">
+                            <span class="highlight">Safety Requirements</span> - Biocompatibility, heat
+                        </div>
+                    </div>
+                    <div class="challenge-item">
+                        <i class="material-icons challenge-icon">sync</i>
+                        <div class="challenge-text">
+                            <span class="highlight">Reliability</span> - Critical medical applications
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">battery_charging_full</i>
+                    Battery Technologies
+                </div>
+                <div class="battery-types">
+                    <div class="battery-grid">
+                        <div class="battery-item">
+                            <i class="material-icons battery-icon">battery_full</i>
+                            <div class="battery-text">Li-ion - High energy density</div>
+                        </div>
+                        <div class="battery-item">
+                            <i class="material-icons battery-icon">battery_6_bar</i>
+                            <div class="battery-text">Thin-film - Flexible form factor</div>
+                        </div>
+                        <div class="battery-item">
+                            <i class="material-icons battery-icon">battery_4_bar</i>
+                            <div class="battery-text">Solid-state - Enhanced safety</div>
+                        </div>
+                        <div class="battery-item">
+                            <i class="material-icons battery-icon">battery_2_bar</i>
+                            <div class="battery-text">Printed - Customizable shapes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">lightbulb</i>
+                    Power Solutions
+                </div>
+                <div class="solutions-grid">
+                    <div class="solution-card">
+                        <div class="solution-header">
+                            <i class="material-icons solution-icon">power</i>
+                            <h2 class="solution-title">Low-Power Design</h2>
+                        </div>
+                        <ul class="solution-list">
+                            <li class="solution-item">
+                                <i class="material-icons item-icon">sleep</i>
+                                <span><span class="highlight">Sleep Modes</span> - Deep sleep states</span>
+                            </li>
+                            <li class="solution-item">
+                                <i class="material-icons item-icon">speed</i>
+                                <span><span class="highlight">Duty Cycling</span> - Intermittent operation</span>
+                            </li>
+                            <li class="solution-item">
+                                <i class="material-icons item-icon">memory</i>
+                                <span><span class="highlight">Efficient MCUs</span> - ARM Cortex-M</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="solution-card">
+                        <div class="solution-header">
+                            <i class="material-icons solution-icon">bolt</i>
+                            <h2 class="solution-title">Energy Harvesting</h2>
+                        </div>
+                        <ul class="solution-list">
+                            <li class="solution-item">
+                                <i class="material-icons item-icon">directions_run</i>
+                                <span><span class="highlight">Kinetic</span> - Motion, vibration</span>
+                            </li>
+                            <li class="solution-item">
+                                <i class="material-icons item-icon">wb_sunny</i>
+                                <span><span class="highlight">Solar</span> - Indoor/outdoor light</span>
+                            </li>
+                            <li class="solution-item">
+                                <i class="material-icons item-icon">whatshot</i>
+                                <span><span class="highlight">Thermal</span> - Body heat gradients</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">settings</i>
+                    Power Management ICs
+                </div>
+                <div class="battery-types">
+                    <div class="battery-grid">
+                        <div class="battery-item">
+                            <i class="material-icons battery-icon">power_settings_new</i>
+                            <div class="battery-text">DC-DC Converters - High efficiency</div>
+                        </div>
+                        <div class="battery-item">
+                            <i class="material-icons battery-icon">battery_charging_full</i>
+                            <div class="battery-text">Battery Chargers - Fast, safe</div>
+                        </div>
+                        <div class="battery-item">
+                            <i class="material-icons battery-icon">battery_std</i>
+                            <div class="battery-text">Fuel Gauges - Accurate monitoring</div>
+                        </div>
+                        <div class="battery-item">
+                            <i class="material-icons battery-icon">battery_alert</i>
+                            <div class="battery-text">Protection Circuits - Overcharge safety</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study">
+                    <div class="case-title">
+                        <i class="material-icons case-icon">lightbulb</i>
+                        Case Study: Ultra-Low Power ECG Patch
+                    </div>
+                    <div class="case-text">
+                        "A cardiac monitoring patch using kinetic energy harvesting and ultra-low power design achieved 30-day operation without battery replacement, transmitting data via BLE."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

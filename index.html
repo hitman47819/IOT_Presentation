@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #fff;
+      overflow: hidden;
+    }
+    #slide-container {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .slide-wrapper {
+      width: 1280px;
+      height: 720px;
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .slide-wrapper.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .slide-iframe {
+      width: 1280px;
+      height: 720px;
+      border: none;
+      overflow: hidden;
+    }
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      z-index: 100;
+      align-items: center;
+    }
+    button {
+      background: #004080;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 6px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover { 
+      background: #0078d4; 
+    }
+    button:disabled {
+      background: #333;
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    .slide-counter {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+    .loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 200;
+    }
+    .spinner {
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 5px solid #fff;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .error-message {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #d32f2f;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      z-index: 200;
+      display: none;
+    }
+    .fullscreen-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+    }
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: #0078d4;
+      transition: width 0.3s;
+      z-index: 100;
+    }
+    .debug-info {
+      position: fixed;
+      bottom: 70px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      z-index: 100;
+      display: none;
+    }
+    .resume-notice {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 120, 212, 0.8);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      z-index: 200;
+      display: none;
+      animation: fadeInOut 5s forwards;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    @media (max-width: 768px) {
+      .controls {
+        bottom: 10px;
+        gap: 10px;
+      }
+      button {
+        padding: 8px 15px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>Loading presentation...</p>
+    <p id="loading-status">Initializing...</p>
+  </div>
+
+  <div class="error-message" id="error-message"></div>
+  <div class="debug-info" id="debug-info"></div>
+  <div class="resume-notice" id="resume-notice"></div>
+  
+  <div class="progress-bar" id="progress-bar"></div>
+  
+  <div id="slide-container"></div>
+
+  <button class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>
+
+  <div class="controls">
+    <button id="prev-btn" onclick="prevSlide()">Previous</button>
+    <span class="slide-counter" id="slide-counter">0 / 0</span>
+    <button id="next-btn" onclick="nextSlide()">Next</button>
+  </div>
+
+  <script>
+    const slideContainer = document.getElementById('slide-container');
+    const loadingElement = document.getElementById('loading');
+    const loadingStatus = document.getElementById('loading-status');
+    const errorMessage = document.getElementById('error-message');
+    const debugInfo = document.getElementById('debug-info');
+    const resumeNotice = document.getElementById('resume-notice');
+    const slideCounter = document.getElementById('slide-counter');
+    const progressBar = document.getElementById('progress-bar');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    // Configuration
+    const totalSlides = 33; // Number of slide files (1.html to 33.html)
+    const slidePrefix = ''; // Change if your slides have a different naming pattern
+    const slideExtension = '.html';
+    const debugMode = false; // Set to true to see debug information
+    const storageKey = 'presentation_current_slide'; // Key for localStorage
+    
+    let current = 0;
+    const slides = [];
+    let loadedSlides = 0;
+    let savedSlidePosition = 0;
+
+    // Debug logging
+    function debugLog(message) {
+      if (debugMode) {
+        console.log(message);
+        debugInfo.innerHTML += message + '<br>';
+        debugInfo.style.display = 'block';
+      }
+    }
+
+    // Save current slide position to localStorage
+    function saveSlidePosition() {
+      try {
+        localStorage.setItem(storageKey, current.toString());
+        debugLog(`Saved slide position: ${current}`);
+      } catch (e) {
+        debugLog(`Failed to save slide position: ${e.message}`);
+      }
+    }
+
+    // Load saved slide position from localStorage
+    function loadSavedSlidePosition() {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (saved !== null) {
+          savedSlidePosition = parseInt(saved, 10);
+          // Validate the saved position is within bounds
+          if (savedSlidePosition >= 0 && savedSlidePosition < totalSlides) {
+            debugLog(`Loaded saved slide position: ${savedSlidePosition}`);
+            return true;
+          }
+        }
+      } catch (e) {
+        debugLog(`Failed to load saved slide position: ${e.message}`);
+      }
+      return false;
+    }
+
+    // Show resume notice
+    function showResumeNotice(slideNumber) {
+      resumeNotice.textContent = `Resuming from slide ${slideNumber + 1}`;
+      resumeNotice.style.display = 'block';
+      setTimeout(() => {
+        resumeNotice.style.display = 'none';
+      }, 5000);
+    }
+
+    // Calculate scale for slides
+    function calculateScale() {
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight ; // Account for controls
+      const slideWidth = 670 ;
+      const slideHeight = 670 ;
+      
+      // Calculate scale to fit the slide in the viewport
+      const scaleX = viewportWidth / slideWidth;
+      const scaleY = viewportHeight / slideHeight;
+      
+      // Use the smaller scale to ensure the entire slide fits
+      const scale = Math.min(scaleX, scaleY);
+      
+      debugLog(`Viewport: ${viewportWidth}x${viewportHeight}, Slide: ${slideWidth}x${slideHeight}, Scale: ${scale}`);
+      
+      return scale;
+    }
+
+    // Apply scaling to all slides
+    function applyScalingToAllSlides() {
+      const scale = calculateScale();
+      slides.forEach(slide => {
+        const iframe = slide.querySelector('iframe');
+        if (iframe) {
+          iframe.style.transform = `scale(${scale})`;
+          iframe.style.transformOrigin = 'center center';
+        }
+      });
+    }
+
+    // Update progress bar
+    function updateProgressBar() {
+      const progress = (current + 1) / slides.length * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    // Update slide counter
+    function updateSlideCounter() {
+      slideCounter.textContent = `${current + 1} / ${slides.length}`;
+    }
+
+    // Show error message
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = 'block';
+      setTimeout(() => {
+        errorMessage.style.display = 'none';
+      }, 5000);
+    }
+
+    // Update loading status
+    function updateLoadingStatus(status) {
+      loadingStatus.textContent = status;
+    }
+
+    // Load slides using iframes with src attributes
+    function loadSlides() {
+      updateLoadingStatus('Creating slide containers...');
+      debugLog(`Starting to load ${totalSlides} slides`);
+      
+      // Try to load saved position
+      const hasSavedPosition = loadSavedSlidePosition();
+      
+      for (let i = 1; i <= totalSlides; i++) {
+        // Create a wrapper for the slide
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('slide-wrapper');
+        wrapper.id = `slide-${i}`;
+        
+        // Create an iframe to load the slide
+        const iframe = document.createElement('iframe');
+        iframe.classList.add('slide-iframe');
+        iframe.id = `iframe-${i}`;
+        
+        // Set the iframe source to the slide file
+        const slideUrl = `${slidePrefix}${i}${slideExtension}`;
+        iframe.src = slideUrl;
+        
+        debugLog(`Loading slide ${i} from ${slideUrl}`);
+        
+        // Add event listeners for the iframe
+        iframe.onload = function() {
+          debugLog(`Slide ${i} loaded successfully`);
+          
+          // Apply initial scaling
+          const scale = calculateScale();
+          iframe.style.transform = `scale(${scale})`;
+          iframe.style.transformOrigin = 'center center';
+          
+          loadedSlides++;
+          updateLoadingStatus(`Loaded ${loadedSlides} of ${totalSlides} slides`);
+          
+          if (loadedSlides === totalSlides) {
+            loadingElement.style.display = 'none';
+            
+            // Set current slide to saved position if available
+            if (hasSavedPosition) {
+              current = savedSlidePosition;
+              showResumeNotice(current);
+            }
+            
+            showSlide(current);
+            debugLog('All slides loaded successfully');
+          }
+        };
+        
+        iframe.onerror = function() {
+          debugLog(`Error loading slide ${i}`);
+          showError(`Failed to load slide ${i}`);
+          
+          // Create a fallback slide
+          wrapper.innerHTML = `
+            <div style="background: white; color: black; padding: 40px; border-radius: 8px; text-align: center; width: 1280px; height: 720px;">
+              <h2>Slide ${i}</h2>
+              <p>Failed to load content for this slide.</p>
+              <p>Make sure the file ${slideUrl} exists.</p>
+            </div>
+          `;
+          
+          loadedSlides++;
+          updateLoadingStatus(`Loaded ${loadedSlides} of ${totalSlides} slides`);
+          
+          if (loadedSlides === totalSlides) {
+            loadingElement.style.display = 'none';
+            
+            // Set current slide to saved position if available
+            if (hasSavedPosition) {
+              current = savedSlidePosition;
+              showResumeNotice(current);
+            }
+            
+            showSlide(current);
+          }
+        };
+        
+        // Append the iframe to the wrapper
+        wrapper.appendChild(iframe);
+        slideContainer.appendChild(wrapper);
+        slides.push(wrapper);
+      }
+      
+      if (slides.length === 0) {
+        showError("No slides could be loaded");
+        loadingElement.style.display = 'none';
+      }
+    }
+
+    function showSlide(index) {
+      if (slides.length === 0) return;
+      
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      updateSlideCounter();
+      updateProgressBar();
+      
+      // Update button states
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+      
+      // Save current position
+      saveSlidePosition();
+    }
+
+    function nextSlide() {
+      if (current < slides.length - 1) {
+        current++;
+        showSlide(current);
+      }
+    }
+
+    function prevSlide() {
+      if (current > 0) {
+        current--;
+        showSlide(current);
+      }
+    }
+
+    // Toggle fullscreen
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          showError(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+      if (e.key === 'd' || e.key === 'D') {
+        debugMode = !debugMode;
+        debugInfo.style.display = debugMode ? 'block' : 'none';
+      }
+    });
+
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) nextSlide();
+      if (touchEndX > touchStartX + 50) prevSlide();
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      // Recalculate scale for all slides
+      applyScalingToAllSlides();
+    });
+
+    // Initialize
+    loadSlides();
+  </script>
+</body>
+</html>

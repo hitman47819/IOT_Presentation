@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Remote Patient Monitoring System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .case-overview {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .overview-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .overview-icon {
+            color: #4fc3f7;
+            margin-right: 12px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .overview-text {
+            font-size: 20px;
+            color: #333;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .hardware-card {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .hardware-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .hardware-icon {
+            font-size: 32px;
+            color: #4fc3f7;
+            margin-right: 12px;
+        }
+        .hardware-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .hardware-list {
+            list-style-type: none;
+        }
+        .hardware-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 20px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .results-box {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+        .result-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .result-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .result-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 240px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .quote-box {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-left: 4px solid #4fc3f7;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            font-style: italic;
+        }
+        .quote-source {
+            font-style: normal;
+            font-weight: 600;
+            color: #003366;
+            margin-top: 8px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Case Study: Remote Patient Monitoring System</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">monitor_heart</i>
+                    System Overview
+                </div>
+                <div class="case-overview">
+                    <div class="overview-item">
+                        <i class="material-icons overview-icon">people</i>
+                        <div class="overview-text">
+                            <span class="highlight">Target:</span> Chronic disease patients (diabetes, cardiac)
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <i class="material-icons overview-icon">sensors</i>
+                        <div class="overview-text">
+                            <span class="highlight">Devices:</span> Wearable sensors, home monitoring units
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <i class="material-icons overview-icon">router</i>
+                        <div class="overview-text">
+                            <span class="highlight">Connectivity:</span> BLE + MQTT protocol
+                        </div>
+                    </div>
+                    <div class="overview-item">
+                        <i class="material-icons overview-icon">schedule</i>
+                        <div class="overview-text">
+                            <span class="highlight">Monitoring:</span> Real-time data transmission every 5 minutes
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">memory</i>
+                    Hardware Implementation
+                </div>
+                <div class="hardware-grid">
+                    <div class="hardware-card">
+                        <div class="hardware-header">
+                            <i class="material-icons hardware-icon">watch</i>
+                            <h2 class="hardware-title">Wearable Sensors</h2>
+                        </div>
+                        <ul class="hardware-list">
+                            <li class="hardware-item">
+                                <i class="material-icons item-icon">favorite</i>
+                                <span><span class="highlight">PPG Sensor</span> - Heart rate</span>
+                            </li>
+                            <li class="hardware-item">
+                                <i class="material-icons item-icon">thermostat</i>
+                                <span><span class="highlight">Temperature</span> - Skin temp</span>
+                            </li>
+                            <li class="hardware-item">
+                                <i class="material-icons item-icon">battery_charging_full</i>
+                                <span><span class="highlight">Battery</span> - 7-day operation</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="hardware-card">
+                        <div class="hardware-header">
+                            <i class="material-icons hardware-icon">home</i>
+                            <h2 class="hardware-title">Home Hub</h2>
+                        </div>
+                        <ul class="hardware-list">
+                            <li class="hardware-item">
+                                <i class="material-icons item-icon">bluetooth</i>
+                                <span><span class="highlight">BLE Module</span> - Data collection</span>
+                            </li>
+                            <li class="hardware-item">
+                                <i class="material-icons item-icon">wifi</i>
+                                <span><span class="highlight">Wi-Fi</span> - Cloud connectivity</span>
+                            </li>
+                            <li class="hardware-item">
+                                <i class="material-icons item-icon">memory</i>
+                                <span><span class="highlight">Processor</span> - ARM Cortex-M4</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="image-container">
+                    <img src="./assets/image_resize.webp" alt="Remote Patient Monitoring System">
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">trending_up</i>
+                    Implementation Results
+                </div>
+                <div class="results-box">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <i class="material-icons result-icon">trending_down</i>
+                            <div class="result-text">32% reduction in hospital readmissions</div>
+                        </div>
+                        <div class="result-item">
+                            <i class="material-icons result-icon">schedule</i>
+                            <div class="result-text">45% faster intervention for critical events</div>
+                        </div>
+                        <div class="result-item">
+                            <i class="material-icons result-icon">thumb_up</i>
+                            <div class="result-text">87% patient satisfaction rate</div>
+                        </div>
+                        <div class="result-item">
+                            <i class="material-icons result-icon">savings</i>
+                            <div class="result-text">$1.2M annual cost savings</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">lightbulb</i>
+                    Key Success Factors
+                </div>
+                <div class="results-box">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <i class="material-icons result-icon">battery_charging_full</i>
+                            <div class="result-text">Extended battery life (7+ days)</div>
+                        </div>
+                        <div class="result-item">
+                            <i class="material-icons result-icon">security</i>
+                            <div class="result-text">End-to-end data encryption</div>
+                        </div>
+                        <div class="result-item">
+                            <i class="material-icons result-icon">touch_app</i>
+                            <div class="result-text">Intuitive user interface</div>
+                        </div>
+                        <div class="result-item">
+                            <i class="material-icons result-icon">sync</i>
+                            <div class="result-text">Seamless data synchronization</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote-box">
+                    "The hardware-focused approach with BLE connectivity and efficient power management enabled continuous monitoring without compromising patient comfort or data security."
+                    <div class="quote-source">— Healthcare IoT Implementation Journal (2023)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

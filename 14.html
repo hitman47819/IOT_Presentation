@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Architecture and Implementation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .architecture-diagram {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .diagram-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .diagram-box {
+            background-color: white;
+            border: 2px solid #4fc3f7;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 48%;
+        }
+        .diagram-box-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .diagram-box-content {
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+        }
+        .diagram-center {
+            background-color: #003366;
+            color: white;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .diagram-center-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .diagram-center-content {
+            font-size: 18px;
+            text-align: center;
+        }
+        .hardware-components {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+        .component-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        .component-icon {
+            color: #4fc3f7;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .component-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .implementation-examples {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .example-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .example-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .example-content {
+            flex: 1;
+        }
+        .example-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 5px;
+        }
+        .example-desc {
+            font-size: 18px;
+            color: #333;
+        }
+        .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 180px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">MQTT Architecture and Implementation</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">architecture</i>
+                    MQTT Architecture
+                </div>
+                <div class="architecture-diagram">
+                    <div class="diagram-row">
+                        <div class="diagram-box">
+                            <div class="diagram-box-title">Publishers</div>
+                            <div class="diagram-box-content">Medical Sensors & Devices</div>
+                        </div>
+                        <div class="diagram-box">
+                            <div class="diagram-box-title">Subscribers</div>
+                            <div class="diagram-box-content">Healthcare Applications</div>
+                        </div>
+                    </div>
+                    <div class="diagram-center">
+                        <div class="diagram-center-title">MQTT Broker</div>
+                        <div class="diagram-center-content">Message Filtering & Distribution</div>
+                    </div>
+                    <div class="diagram-row">
+                        <div class="diagram-box">
+                            <div class="diagram-box-title">Topics</div>
+                            <div class="diagram-box-content">Hierarchical Organization</div>
+                        </div>
+                        <div class="diagram-box">
+                            <div class="diagram-box-title">QoS Levels</div>
+                            <div class="diagram-box-content">0, 1, 2 (Reliability)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">memory</i>
+                    Hardware Components
+                </div>
+                <div class="hardware-components">
+                    <div class="component-grid">
+                        <div class="component-item">
+                            <i class="material-icons component-icon">router</i>
+                            <div class="component-text">
+                                <span class="highlight">MQTT Broker:</span> Cloud/Edge Server
+                            </div>
+                        </div>
+                        <div class="component-item">
+                            <i class="material-icons component-icon">sensors</i>
+                            <div class="component-text">
+                                <span class="highlight">Sensors:</span> Medical Monitoring
+                            </div>
+                        </div>
+                        <div class="component-item">
+                            <i class="material-icons component-icon">memory</i>
+                            <div class="component-text">
+                                <span class="highlight">MCUs:</span> ARM Cortex-M Series
+                            </div>
+                        </div>
+                        <div class="component-item">
+                            <i class="material-icons component-icon">wifi</i>
+                            <div class="component-text">
+                                <span class="highlight">Connectivity:</span> Wi-Fi/Ethernet
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">integration_instructions</i>
+                    Implementation Examples
+                </div>
+                <div class="implementation-examples">
+                    <div class="example-item">
+                        <i class="material-icons example-icon">monitor_heart</i>
+                        <div class="example-content">
+                            <div class="example-title">Remote Patient Monitoring</div>
+                            <div class="example-desc">Vital signs transmitted via MQTT to healthcare providers</div>
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons example-icon">medication</i>
+                        <div class="example-content">
+                            <div class="example-title">Smart Medication Dispensing</div>
+                            <div class="example-desc">Real-time alerts for medication adherence</div>
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons example-icon">local_hospital</i>
+                        <div class="example-content">
+                            <div class="example-title">Hospital Asset Tracking</div>
+                            <div class="example-desc">Equipment location and status monitoring</div>
+                        </div>
+                    </div>
+                    <div class="example-item">
+                        <i class="material-icons example-icon">emergency</i>
+                        <div class="example-content">
+                            <div class="example-title">Emergency Response System</div>
+                            <div class="example-desc">Instant alerts for critical health events</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="https://sfile.chatglm.cn/images-ppt/ce8e8103e99e.svg" alt="MQTT Protocol Architecture">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

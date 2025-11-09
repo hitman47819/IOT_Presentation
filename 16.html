@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFC/RFID Technologies in Healthcare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .left-content {
+            flex: 1;
+            padding-right: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+            margin-right: 10px;
+        }
+        .tech-comparison {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        .comparison-table th {
+            text-align: left;
+            font-size: 20px;
+            font-weight: 600;
+            color: #003366;
+            padding: 8px 12px;
+        }
+        .comparison-table td {
+            font-size: 18px;
+            color: #333;
+            padding: 8px 12px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        .comparison-table tr td:first-child {
+            font-weight: 600;
+            color: #003366;
+            border-radius: 8px 0 0 8px;
+        }
+        .comparison-table tr td:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .hardware-components {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+        }
+        .component-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        .component-icon {
+            color: #4fc3f7;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .component-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 240px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .application-box {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .application-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .application-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            width: calc(50% - 6px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .application-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        .application-text {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">NFC/RFID Technologies in Healthcare</h1>
+        </div>
+        <div class="content">
+            <div class="left-content">
+                <div class="section-title">
+                    <i class="material-icons section-icon">compare</i>
+                    NFC vs RFID Comparison
+                </div>
+                <div class="tech-comparison">
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Feature</th>
+                            <th>NFC</th>
+                            <th>RFID</th>
+                        </tr>
+                        <tr>
+                            <td>Range</td>
+                            <td><span class="highlight">Very Short</span> (≤ 4cm)</td>
+                            <td><span class="highlight">Longer</span> (up to 100m)</td>
+                        </tr>
+                        <tr>
+                            <td>Power</td>
+                            <td>Passive/Active</td>
+                            <td>Passive/Active</td>
+                        </tr>
+                        <tr>
+                            <td>Frequency</td>
+                            <td>13.56 MHz</td>
+                            <td>125-134 kHz / 860-960 MHz</td>
+                        </tr>
+                        <tr>
+                            <td>Data Transfer</td>
+                            <td>106-424 kbps</td>
+                            <td>Up to 640 kbps</td>
+                        </tr>
+                        <tr>
+                            <td>Security</td>
+                            <td><span class="highlight">Higher</span> (encryption support)</td>
+                            <td>Lower (varies by type)</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">memory</i>
+                    Hardware Components
+                </div>
+                <div class="hardware-components">
+                    <div class="component-grid">
+                        <div class="component-item">
+                            <i class="material-icons component-icon">settings_input_antenna</i>
+                            <div class="component-text">
+                                <span class="highlight">Antenna Coils</span> - Inductive coupling
+                            </div>
+                        </div>
+                        <div class="component-item">
+                            <i class="material-icons component-icon">memory</i>
+                            <div class="component-text">
+                                <span class="highlight">Microchips</span> - Data storage & processing
+                            </div>
+                        </div>
+                        <div class="component-item">
+                            <i class="material-icons component-icon">settings_input_component</i>
+                            <div class="component-text">
+                                <span class="highlight">Readers</span> - Signal transmission & reception
+                            </div>
+                        </div>
+                        <div class="component-item">
+                            <i class="material-icons component-icon">battery_charging_full</i>
+                            <div class="component-text">
+                                <span class="highlight">Power Source</span> - Passive/Active options
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-content">
+                <div class="image-container">
+                    <img src="./assets/8a2842419888.png" alt="NFC/RFID Healthcare Applications">
+                </div>
+                
+                <div class="section-title">
+                    <i class="material-icons section-icon">local_hospital</i>
+                    Healthcare Applications
+                </div>
+                <div class="application-box">
+                    <div class="application-list">
+                        <div class="application-item">
+                            <i class="material-icons application-icon">person</i>
+                            <div class="application-text">Patient Identification</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">medication</i>
+                            <div class="application-text">Medication Management</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">medical_services</i>
+                            <div class="application-text">Equipment Tracking</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">inventory</i>
+                            <div class="application-text">Supply Chain Management</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">security</i>
+                            <div class="application-text">Access Control</div>
+                        </div>
+                        <div class="application-item">
+                            <i class="material-icons application-icon">history</i>
+                            <div class="application-text">Medical History Access</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

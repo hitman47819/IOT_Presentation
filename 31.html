@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>References</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 25px;
+            flex-grow: 1;
+        }
+        .reference-section {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-left: 4px solid #4fc3f7;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .section-icon {
+            font-size: 28px;
+            color: #4fc3f7;
+            margin-right: 12px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .reference-list {
+            list-style-type: none;
+            flex-grow: 1;
+        }
+        .reference-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 10px;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .reference-text {
+            flex: 1;
+        }
+        .reference-title {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 4px;
+        }
+        .reference-authors {
+            color: #555;
+            margin-bottom: 2px;
+        }
+        .reference-source {
+            color: #777;
+            font-style: italic;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .note-box {
+            background-color: rgba(0, 51, 102, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+        }
+        .note-icon {
+            font-size: 24px;
+            color: #4fc3f7;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .note-text {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">References</h1>
+        </div>
+        <div class="content">
+            <div class="reference-grid">
+                <div class="reference-section">
+                    <div class="section-header">
+                        <i class="material-icons section-icon">menu_book</i>
+                        <h2 class="section-title">Foundational Papers</h2>
+                    </div>
+                    <ul class="reference-list">
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">The Internet of Things: Impact and Implications for Health Care Delivery</div>
+                                <div class="reference-authors">Kelly JT, Campbell KL, Gong E, Scuffham P</div>
+                                <div class="reference-source">Journal of Medical Internet Research, 2020</div>
+                            </div>
+                        </li>
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">A review of IoT applications in healthcare</div>
+                                <div class="reference-authors">Li C, et al.</div>
+                                <div class="reference-source">Neural Computing and Applications, 2024</div>
+                            </div>
+                        </li>
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">IoT-Based Healthcare-Monitoring System towards Improving Quality of Life</div>
+                                <div class="reference-authors">Abdulmalek S, et al.</div>
+                                <div class="reference-source">Sensors, 2022</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="reference-section">
+                    <div class="section-header">
+                        <i class="material-icons section-icon">router</i>
+                        <h2 class="section-title">Communication Protocols</h2>
+                    </div>
+                    <ul class="reference-list">
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">Smart Healthcare Monitoring System Using MQTT Protocol</div>
+                                <div class="reference-authors">Sarierao BS, Prakasarao A</div>
+                                <div class="reference-source">IEEE International Conference, 2018</div>
+                            </div>
+                        </li>
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">An IoT-Based Smart System with an MQTT Broker for Patient Vital Sign Monitoring</div>
+                                <div class="reference-authors">Tsao YC, et al.</div>
+                                <div class="reference-source">Journal of Medical Internet Research, 2022</div>
+                            </div>
+                        </li>
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">Bluetooth Low Energy: Wireless Connectivity for Medical Monitoring</div>
+                                <div class="reference-authors">Omre AH</div>
+                                <div class="reference-source">Journal of Medical Systems, 2010</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="reference-section">
+                    <div class="section-header">
+                        <i class="material-icons section-icon">nfc</i>
+                        <h2 class="section-title">NFC/RFID Technologies</h2>
+                    </div>
+                    <ul class="reference-list">
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">Radio Frequency Identification (RFID) in health care: where are we?</div>
+                                <div class="reference-authors">Profetto L, et al.</div>
+                                <div class="reference-source">Healthcare Technology Letters, 2022</div>
+                            </div>
+                        </li>
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">NFC/RFID-enabled wearables and implants for biomedical applications</div>
+                                <div class="reference-authors">Chen X, et al.</div>
+                                <div class="reference-source">Microsystems & Nanoengineering, 2025</div>
+                            </div>
+                        </li>
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">Near Field Communication (NFC) Technology in Healthcare</div>
+                                <div class="reference-authors">CCL Healthcare</div>
+                                <div class="reference-source">Healthcare Technology Review, 2023</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="reference-section">
+                    <div class="section-header">
+                        <i class="material-icons section-icon">watch</i>
+                        <h2 class="section-title">Wearable Devices</h2>
+                    </div>
+                    <ul class="reference-list">
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">Bluetooth Medical Devices Cleared by FDA in 2024</div>
+                                <div class="reference-authors">Orthogonal</div>
+                                <div class="reference-source">Medical Device Technology Report, 2024</div>
+                            </div>
+                        </li>
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">A Guide to Bluetooth Medical Devices</div>
+                                <div class="reference-authors">HTD Health</div>
+                                <div class="reference-source">Healthcare Technology Guide, 2023</div>
+                            </div>
+                        </li>
+                        <li class="reference-item">
+                            <i class="material-icons item-icon">article</i>
+                            <div class="reference-text">
+                                <div class="reference-title">What is BLE? Insights into Its Impact on Medical Devices</div>
+                                <div class="reference-authors">Airista Flow</div>
+                                <div class="reference-source">Healthcare IoT Review, 2023</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="note-box">
+                <i class="material-icons note-icon">info</i>
+                <div class="note-text">
+                    All references are from peer-reviewed journals and reputable industry sources, focusing on <span class="highlight">hardware implementations</span> of IoT technologies in healthcare applications.
+                </div>
+                   
+            </div>
+             
+            <div class="note-box">
+                <i class="material-icons note-icon">info</i>
+                <div class="note-text">
+                            thanks to Chat.z.ai for assistance in compiling these references and in other things.
+                </div>
+                   
+            </div>
+        </div>
+    </div>
+</body>
+</html>

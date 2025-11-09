@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensors in Healthcare IoT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #003366;
+            padding: 20px 70px;
+            color: white;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            padding: 30px 70px;
+        }
+        .sensor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 25px;
+            width: 100%;
+        }
+        .sensor-card {
+            background-color: rgba(79, 195, 247, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border-top: 4px solid #4fc3f7;
+        }
+        .sensor-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .sensor-icon {
+            font-size: 32px;
+            color: #4fc3f7;
+            margin-right: 12px;
+        }
+        .sensor-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #003366;
+        }
+        .sensor-list {
+            list-style-type: none;
+            margin-top: 10px;
+        }
+        .sensor-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        .item-icon {
+            color: #003366;
+            margin-right: 8px;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .highlight {
+            color: #003366;
+            font-weight: 600;
+        }
+        .specs {
+            margin-top: auto;
+            background-color: rgba(0, 51, 102, 0.05);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #555;
+        }
+        .specs-title {
+            font-weight: 600;
+            color: #003366;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .spec-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .spec-icon {
+            color: #4fc3f7;
+            margin-right: 6px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1 class="title">Sensors in Healthcare IoT</h1>
+        </div>
+        <div class="content">
+            <div class="sensor-grid">
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">favorite</i>
+                        <h2 class="sensor-title">Physiological</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">monitor_heart</i>
+                            <span><span class="highlight">ECG/EKG</span> - Heart rhythm monitoring</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">bloodtype</i>
+                            <span><span class="highlight">PPG</span> - Blood oxygen & pulse</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">compress</i>
+                            <span><span class="highlight">Blood Pressure</span> - Cuffless sensors</span>
+                        </li>
+                    </ul>
+                    <div class="specs">
+                        <div class="specs-title">Hardware Specs</div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">precision_manufacturing</i>
+                            <span>Size: 5-15mm²</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">bolt</i>
+                            <span>Power: 0.5-2mW</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">science</i>
+                        <h2 class="sensor-title">Biochemical</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">water_drop</i>
+                            <span><span class="highlight">Glucose</span> - Continuous monitoring</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">biotech</i>
+                            <span><span class="highlight">Electrolytes</span> - Sweat analysis</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">coronavirus</i>
+                            <span><span class="highlight">Biomarkers</span> - Disease detection</span>
+                        </li>
+                    </ul>
+                    <div class="specs">
+                        <div class="specs-title">Hardware Specs</div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">precision_manufacturing</i>
+                            <span>Size: 2-8mm²</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">bolt</i>
+                            <span>Power: 0.1-1mW</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">directions_run</i>
+                        <h2 class="sensor-title">Motion</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">speed</i>
+                            <span><span class="highlight">Accelerometers</span> - Fall detection</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">rotate_90_degrees_ccw</i>
+                            <span><span class="highlight">Gyroscopes</span> - Movement tracking</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">explore</i>
+                            <span><span class="highlight">Magnetometers</span> - Orientation</span>
+                        </li>
+                    </ul>
+                    <div class="specs">
+                        <div class="specs-title">Hardware Specs</div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">precision_manufacturing</i>
+                            <span>Size: 3-10mm²</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">bolt</i>
+                            <span>Power: 0.2-0.8mW</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">thermostat</i>
+                        <h2 class="sensor-title">Environmental</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">device_thermostat</i>
+                            <span><span class="highlight">Temperature</span> - Body & ambient</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">water</i>
+                            <span><span class="highlight">Humidity</span> - Sweat monitoring</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">air</i>
+                            <span><span class="highlight">Air Quality</span> - Respiratory health</span>
+                        </li>
+                    </ul>
+                    <div class="specs">
+                        <div class="specs-title">Hardware Specs</div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">precision_manufacturing</i>
+                            <span>Size: 2-6mm²</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">bolt</i>
+                            <span>Power: 0.05-0.5mW</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">hearing</i>
+                        <h2 class="sensor-title">Acoustic</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">record_voice_over</i>
+                            <span><span class="highlight">Microphones</span> - Cough detection</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">volume_up</i>
+                            <span><span class="highlight">Ultrasonic</span> - Blood flow imaging</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">hearing_disabled</i>
+                            <span><span class="highlight">Vibration</span> - Respiratory sounds</span>
+                        </li>
+                    </ul>
+                    <div class="specs">
+                        <div class="specs-title">Hardware Specs</div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">precision_manufacturing</i>
+                            <span>Size: 4-12mm²</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">bolt</i>
+                            <span>Power: 1-5mW</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sensor-card">
+                    <div class="sensor-header">
+                        <i class="material-icons sensor-icon">photo_camera</i>
+                        <h2 class="sensor-title">Optical</h2>
+                    </div>
+                    <ul class="sensor-list">
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">visibility</i>
+                            <span><span class="highlight">Cameras</span> - Wound monitoring</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">light_mode</i>
+                            <span><span class="highlight">Photodiodes</span> - Light sensing</span>
+                        </li>
+                        <li class="sensor-item">
+                            <i class="material-icons item-icon">wb_sunny</i>
+                            <span><span class="highlight">Spectrometers</span> - Tissue analysis</span>
+                        </li>
+                    </ul>
+                    <div class="specs">
+                        <div class="specs-title">Hardware Specs</div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">precision_manufacturing</i>
+                            <span>Size: 5-20mm²</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="material-icons spec-icon">bolt</i>
+                            <span>Power: 2-10mW</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
