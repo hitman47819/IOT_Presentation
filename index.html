@@ -2,18 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Presentation</title>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
     body {
       margin: 0;
       background: #000;
       font-family: 'Source Sans Pro', sans-serif;
       color: #fff;
       overflow: hidden;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
     }
+    
     #slide-container {
       width: 100vw;
       height: 100vh;
@@ -23,9 +32,8 @@
       justify-content: center;
       align-items: center;
     }
+    
     .slide-wrapper {
-      width: 1280px;
-      height: 720px;
       position: absolute;
       opacity: 0;
       pointer-events: none;
@@ -33,51 +41,77 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
+      height: 100%;
     }
+    
     .slide-wrapper.active {
       opacity: 1;
       pointer-events: all;
     }
+    
     .slide-iframe {
-      width: 1280px;
-      height: 720px;
       border: none;
       overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
+    
     .controls {
       position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 20px;
+      gap: 15px;
       z-index: 100;
       align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
     }
+    
     button {
       background: #004080;
       color: white;
       border: none;
-      padding: 10px 25px;
-      border-radius: 6px;
-      font-size: 18px;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      min-width: 44px;
+      min-height: 44px;
     }
+    
     button:hover { 
       background: #0078d4; 
+      transform: scale(1.05);
     }
+    
+    button:active {
+      transform: scale(0.95);
+    }
+    
     button:disabled {
       background: #333;
       cursor: not-allowed;
       opacity: 0.5;
     }
+    
     .slide-counter {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(255, 255, 255, 0.2);
       padding: 8px 15px;
       border-radius: 20px;
       font-size: 14px;
+      min-width: 60px;
+      text-align: center;
     }
+    
     .loading {
       position: fixed;
       top: 50%;
@@ -85,20 +119,24 @@
       transform: translate(-50%, -50%);
       text-align: center;
       z-index: 200;
+      padding: 20px;
     }
+    
     .spinner {
-      border: 5px solid rgba(255, 255, 255, 0.3);
+      border: 4px solid rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      border-top: 5px solid #fff;
-      width: 50px;
-      height: 50px;
+      border-top: 4px solid #fff;
+      width: 40px;
+      height: 40px;
       animation: spin 1s linear infinite;
       margin: 0 auto 20px;
     }
+    
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    
     .error-message {
       position: fixed;
       top: 20px;
@@ -106,65 +144,171 @@
       transform: translateX(-50%);
       background: #d32f2f;
       color: white;
-      padding: 10px 20px;
-      border-radius: 4px;
+      padding: 12px 20px;
+      border-radius: 25px;
       z-index: 200;
       display: none;
+      max-width: 90%;
+      text-align: center;
     }
+    
     .fullscreen-btn {
       position: fixed;
       top: 20px;
       right: 20px;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
       z-index: 100;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      backdrop-filter: blur(10px);
     }
+    
     .progress-bar {
       position: fixed;
       top: 0;
       left: 0;
-      height: 4px;
+      height: 3px;
       background: #0078d4;
       transition: width 0.3s;
       z-index: 100;
     }
+    
     .debug-info {
       position: fixed;
-      bottom: 70px;
-      left: 20px;
-      background: rgba(0, 0, 0, 0.7);
+      bottom: 80px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.8);
       padding: 10px;
-      border-radius: 4px;
+      border-radius: 8px;
       font-size: 12px;
       z-index: 100;
       display: none;
+      max-width: 80%;
+      word-wrap: break-word;
     }
+    
     .resume-notice {
       position: fixed;
       top: 80px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(0, 120, 212, 0.8);
+      background: rgba(0, 120, 212, 0.9);
       color: white;
-      padding: 10px 20px;
-      border-radius: 4px;
+      padding: 12px 20px;
+      border-radius: 25px;
       z-index: 200;
       display: none;
       animation: fadeInOut 5s forwards;
+      max-width: 90%;
+      text-align: center;
     }
+    
     @keyframes fadeInOut {
-      0% { opacity: 0; }
-      20% { opacity: 1; }
-      80% { opacity: 1; }
-      100% { opacity: 0; }
+      0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+      20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
     }
+    
+    .swipe-hint {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      z-index: 50;
+      display: none;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    
+    /* Mobile-specific styles */
     @media (max-width: 768px) {
       .controls {
         bottom: 10px;
         gap: 10px;
-      }
-      button {
         padding: 8px 15px;
-        font-size: 16px;
+      }
+      
+      button {
+        padding: 10px 15px;
+        font-size: 14px;
+      }
+      
+      .slide-counter {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+      
+      .fullscreen-btn {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+      
+      .swipe-hint {
+        display: block;
+      }
+      
+      .loading p {
+        font-size: 14px;
+      }
+      
+      .error-message {
+        font-size: 14px;
+        padding: 10px 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .controls {
+        gap: 5px;
+        padding: 5px 10px;
+      }
+      
+      button {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+      
+      .slide-counter {
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+    }
+    
+    /* Landscape mobile optimizations */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .controls {
+        bottom: 5px;
+        padding: 5px 10px;
+      }
+      
+      button {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+      
+      .fullscreen-btn {
+        top: 5px;
+        right: 5px;
+        width: 35px;
+        height: 35px;
       }
     }
   </style>
@@ -179,17 +323,26 @@
   <div class="error-message" id="error-message"></div>
   <div class="debug-info" id="debug-info"></div>
   <div class="resume-notice" id="resume-notice"></div>
+  <div class="swipe-hint" id="swipe-hint">← Swipe to navigate →</div>
   
   <div class="progress-bar" id="progress-bar"></div>
   
   <div id="slide-container"></div>
 
-  <button class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>
+  <button class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()">
+    <span class="material-icons">fullscreen</span>
+  </button>
 
   <div class="controls">
-    <button id="prev-btn" onclick="prevSlide()">Previous</button>
+    <button id="prev-btn" onclick="prevSlide()">
+      <span class="material-icons">chevron_left</span>
+      <span class="btn-text">Previous</span>
+    </button>
     <span class="slide-counter" id="slide-counter">0 / 0</span>
-    <button id="next-btn" onclick="nextSlide()">Next</button>
+    <button id="next-btn" onclick="nextSlide()">
+      <span class="btn-text">Next</span>
+      <span class="material-icons">chevron_right</span>
+    </button>
   </div>
 
   <script>
@@ -203,6 +356,7 @@
     const progressBar = document.getElementById('progress-bar');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const swipeHint = document.getElementById('swipe-hint');
     
     // Configuration
     const totalSlides = 33; // Number of slide files (1.html to 33.html)
@@ -215,6 +369,16 @@
     const slides = [];
     let loadedSlides = 0;
     let savedSlidePosition = 0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    // Detect if mobile device
+    function isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+             window.innerWidth <= 768;
+    }
 
     // Debug logging
     function debugLog(message) {
@@ -262,33 +426,52 @@
       }, 5000);
     }
 
-    // Calculate scale for slides
-    function calculateScale() {
+    // Calculate optimal slide dimensions and scale
+    function calculateSlideDimensions() {
       const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight ; // Account for controls
-      const slideWidth = 670 ;
-      const slideHeight = 670 ;
+      const viewportHeight = window.innerHeight;
+      const isPortrait = viewportHeight > viewportWidth;
+      const isLandscapeMobile = isMobile() && !isPortrait;
       
-      // Calculate scale to fit the slide in the viewport
-      const scaleX = viewportWidth / slideWidth;
-      const scaleY = viewportHeight / slideHeight;
+      // Define base slide dimensions
+      let slideWidth, slideHeight;
       
-      // Use the smaller scale to ensure the entire slide fits
-      const scale = Math.min(scaleX, scaleY);
+      if (isMobile()) {
+        if (isLandscapeMobile) {
+          // Landscape mobile - use wider aspect ratio
+          slideWidth = viewportWidth * 0.9;
+          slideHeight = viewportHeight * 0.8;
+        } else {
+          // Portrait mobile - use full width with adjusted height
+          slideWidth = viewportWidth * 0.95;
+          slideHeight = viewportHeight * 0.7;
+        }
+      } else {
+        // Desktop - maintain 16:9 aspect ratio
+        slideWidth = Math.min(1280, viewportWidth * 0.9);
+        slideHeight = slideWidth * (9/16);
+        if (slideHeight > viewportHeight * 0.8) {
+          slideHeight = viewportHeight * 0.8;
+          slideWidth = slideHeight * (16/9);
+        }
+      }
       
-      debugLog(`Viewport: ${viewportWidth}x${viewportHeight}, Slide: ${slideWidth}x${slideHeight}, Scale: ${scale}`);
+      debugLog(`Viewport: ${viewportWidth}x${viewportHeight}, Slide: ${Math.round(slideWidth)}x${Math.round(slideHeight)}`);
       
-      return scale;
+      return { width: slideWidth, height: slideHeight };
     }
 
     // Apply scaling to all slides
     function applyScalingToAllSlides() {
-      const scale = calculateScale();
+      const dimensions = calculateSlideDimensions();
+      
       slides.forEach(slide => {
         const iframe = slide.querySelector('iframe');
         if (iframe) {
-          iframe.style.transform = `scale(${scale})`;
-          iframe.style.transformOrigin = 'center center';
+          iframe.style.width = `${dimensions.width}px`;
+          iframe.style.height = `${dimensions.height}px`;
+          iframe.style.maxWidth = '100%';
+          iframe.style.maxHeight = '100%';
         }
       });
     }
@@ -326,6 +509,9 @@
       // Try to load saved position
       const hasSavedPosition = loadSavedSlidePosition();
       
+      // Get initial dimensions
+      const dimensions = calculateSlideDimensions();
+      
       for (let i = 1; i <= totalSlides; i++) {
         // Create a wrapper for the slide
         const wrapper = document.createElement('div');
@@ -337,6 +523,12 @@
         iframe.classList.add('slide-iframe');
         iframe.id = `iframe-${i}`;
         
+        // Set initial dimensions
+        iframe.style.width = `${dimensions.width}px`;
+        iframe.style.height = `${dimensions.height}px`;
+        iframe.style.maxWidth = '100%';
+        iframe.style.maxHeight = '100%';
+        
         // Set the iframe source to the slide file
         const slideUrl = `${slidePrefix}${i}${slideExtension}`;
         iframe.src = slideUrl;
@@ -346,11 +538,6 @@
         // Add event listeners for the iframe
         iframe.onload = function() {
           debugLog(`Slide ${i} loaded successfully`);
-          
-          // Apply initial scaling
-          const scale = calculateScale();
-          iframe.style.transform = `scale(${scale})`;
-          iframe.style.transformOrigin = 'center center';
           
           loadedSlides++;
           updateLoadingStatus(`Loaded ${loadedSlides} of ${totalSlides} slides`);
@@ -375,7 +562,7 @@
           
           // Create a fallback slide
           wrapper.innerHTML = `
-            <div style="background: white; color: black; padding: 40px; border-radius: 8px; text-align: center; width: 1280px; height: 720px;">
+            <div style="background: white; color: black; padding: 20px; border-radius: 8px; text-align: center; width: ${dimensions.width}px; height: ${dimensions.height}px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
               <h2>Slide ${i}</h2>
               <p>Failed to load content for this slide.</p>
               <p>Make sure the file ${slideUrl} exists.</p>
@@ -423,6 +610,13 @@
       
       // Save current position
       saveSlidePosition();
+      
+      // Hide swipe hint after first interaction
+      if (swipeHint.style.display === 'block') {
+        setTimeout(() => {
+          swipeHint.style.display = 'none';
+        }, 3000);
+      }
     }
 
     function nextSlide() {
@@ -461,28 +655,44 @@
       }
     });
 
-    // Touch support for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-
+    // Enhanced touch support for mobile
     document.addEventListener('touchstart', e => {
       touchStartX = e.changedTouches[0].screenX;
-    });
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
 
     document.addEventListener('touchend', e => {
       touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
       handleSwipe();
-    });
+    }, { passive: true });
 
     function handleSwipe() {
-      if (touchEndX < touchStartX - 50) nextSlide();
-      if (touchEndX > touchStartX + 50) prevSlide();
+      const deltaX = touchEndX - touchStartX;
+      const deltaY = touchEndY - touchStartY;
+      const minSwipeDistance = 50;
+      
+      // Ensure horizontal swipe is more significant than vertical
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+        if (deltaX < 0) {
+          nextSlide();
+        } else if (deltaX > 0) {
+          prevSlide();
+        }
+      }
     }
 
     // Handle window resize
     window.addEventListener('resize', () => {
-      // Recalculate scale for all slides
+      // Recalculate dimensions for all slides
       applyScalingToAllSlides();
+    });
+
+    // Handle orientation change
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => {
+        applyScalingToAllSlides();
+      }, 100); // Small delay to ensure orientation change is complete
     });
 
     // Initialize
